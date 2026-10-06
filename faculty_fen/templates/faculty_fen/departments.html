@@ -1,0 +1,25 @@
+{% extends 'faculty_fen/base.html' %}
+
+{% block content %}
+    <h1>Кафедри факультету</h1>
+
+    {% for department in departments %}
+        <div class="department-card">
+            <h2 class="department-title">
+                <a href="/departments/{{ department.id }}/" style="color: inherit; text-decoration: none;">
+                    {{ department.name }}
+                </a>
+            </h2>
+            <p><strong>Завідувач кафедри:</strong> {{ department.head_name }}</p>
+
+            <h4 class="teachers-heading">Випускові спеціальності:</h4>
+            <ul>
+                {% for program in department.programs.all %}
+                    <li><a href="/programs/{{ program.id }}/">{{ program.pr_name }}</a></li>
+                {% empty %}
+                    <li>Спеціальностей не знайдено</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+{% endblock %}

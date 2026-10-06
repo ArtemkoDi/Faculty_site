@@ -1,0 +1,27 @@
+{% extends 'faculty_fen/base.html' %}
+
+{% block content %}
+    <div class="back-link-container">
+        <a href="/departments/" class="back-link">&larr; Повернутися до списку кафедр</a>
+    </div>
+
+    <h1>{{ department.name }}</h1>
+
+    <div class="info-box">
+        <p><strong>Завідувач кафедри:</strong> {{ department.head_name }}</p>
+    </div>
+
+    <h3>Склад кафедри (Викладачі):</h3>
+    <ul class="teachers-list">
+        {% for teacher in department.teachers.all %}
+            <li>
+                <strong>{{ teacher.teacher_name }}</strong> — {{ teacher.teacher_role }}
+                {% if teacher.academic_degree %}
+                    ({{ teacher.academic_degree }})
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>Викладачів поки не додано</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

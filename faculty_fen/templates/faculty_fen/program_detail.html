@@ -1,0 +1,22 @@
+{% extends 'faculty_fen/base.html' %}
+
+{% block content %}
+    <div class="back-link-container">
+        <a href="/programs/" class="back-link">&larr; Повернутися до списку спеціальностей</a>
+    </div>
+
+    <h1>{{ program.pr_name }} (Код: {{ program.pr_code }})</h1>
+
+    <div class="info-box">
+        <h3>Інформація для вступників:</h3>
+        <p><strong>Координатор набору:</strong> {{ program.coordinator_name }}</p>
+        <p><strong>Контакти:</strong> {{ program.coordinator_contacts }}</p>
+        <p><strong>Випускова кафедра:</strong> {{ program.department.name }}</p>
+    </div>
+
+    <h3>Опис програми:</h3>
+    <p>{{ program.course_description|linebreaksbr }}</p>
+
+    <h3>Дисципліни:</h3>
+    <p>{{ program.disciplines|linebreaksbr }}</p>
+{% endblock %}

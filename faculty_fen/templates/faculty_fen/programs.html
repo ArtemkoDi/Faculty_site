@@ -1,0 +1,17 @@
+{% extends 'faculty_fen/base.html' %}
+
+{% block content %}
+    <h1>Спеціальності факультету</h1>
+
+{% for program in programs %}
+<div class="program-card">
+    <h3><a href="/programs/{{ program.id }}/" class="program-link">{{ program.pr_name }}</a> (Код: {{ program.pr_code }})</h3>
+
+    <p><strong>Координатор набору:</strong> {{ program.coordinator_name }} (Контакти: {{ program.coordinator_contacts }})</p>
+
+    <h4>Короткий опис:</h4>
+    <p>{{ program.course_description|truncatewords:50 }}</p>
+</div>
+{% endfor %}
+{% endblock %}
+
