@@ -1,0 +1,23 @@
+{% extends 'faculty_fen/base.html' %}
+
+{% block content %}
+<h1>Програми академічного обміну</h1>
+
+{% for program in programs %}
+<div class="exchange-card">
+    <h3 class="exchange-title">{{ program.university }} ({{ program.country }})</h3>
+    <p><strong>Мови навчання:</strong> {{ program.languages }}</p>
+    <p><strong>Кількість місць:</strong> {{ program.places }}</p>
+    <p><strong>Дедлайн подачі:</strong> {{ program.deadline|date:"d.m.Y" }}</p>
+    <p><strong>Статус:</strong>
+    {% if program.is_active %}
+        <span class="status-active">Прийом триває</span>
+    {% else %}
+        <span class="status-closed">Прийом завершено</span>
+    {% endif %}
+</p>
+    <p class="exchange-desc">{{ program.description }}</p>
+</div>
+
+{% endfor %}
+{% endblock %}

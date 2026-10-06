@@ -1,0 +1,11 @@
+{% extends 'faculty_fen/base.html' %}
+
+{% block content %}
+    <h1>{{ info.title }}</h1>
+
+    <h3>Про факультет:</h3>
+    <p>{{ info.description }}</p>
+
+    <h3>Контакти:</h3>
+    <p>{{ info.contacts|safe|linebreaksbr }}</p>
+{% endblock %}
